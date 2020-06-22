@@ -1,0 +1,304 @@
+<div class="container">
+  <div class="jumbotron">
+    <h2 class="text-center">Formulario</h2>
+    <h6 class="mt-2">
+      Rellene todos los datos obligatorios marcados con
+      <span style="color: red;">*</span>
+    </h6>
+
+    <!-- datos de registro -->
+    <div class="container" style="border: 1px black solid;">
+              <div class="container mt-5" style="border: 1px black solid;">
+
+      <h5 class="text-center mt-4" style="font-weight: bold;">
+        Datos de registro
+      </h5>
+
+      <ng-container [formGroup]="formulario">
+        <div class="centrarInputs">
+          <div class="col-md-8 mb-3 md-form">
+            <input
+              type="text"
+              class="form-control"
+              name="user_name"
+              [ngClass]="{
+                'is-valid': ValidarTexto('user_name').error == false,
+                'is-invalid': ValidarTexto('user_name').error == true
+              }"
+              formControlName="user_name"
+              placeholder="Nombre de usuario"
+            />
+            <label for="" class="obligatorios">*</label>
+          </div>
+        </div>
+
+        <div
+          *ngIf="ValidarTexto('user_name').error"
+          class="invalid-feedback d-block text-center"
+        >
+          {{ ValidarTexto("user_name").message }}
+        </div>
+
+        <div class="centrarInputs">
+          <div class="col-md-8 mb-3 md-form">
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              formControlName="email"
+              [ngClass]="{
+                'is-valid': ValidarTexto('email').error == false,
+                'is-invalid': ValidarTexto('email').error == true
+              }"
+              placeholder="Direccion de e-mail"
+            />
+            <label for="" class="obligatorios">*</label>
+          </div>
+        </div>
+
+        <div
+          *ngIf="ValidarTexto('email').error"
+          class="invalid-feedback d-block text-center"
+        >
+          {{ ValidarTexto("email").message }}
+        </div>
+
+
+        <div class="centrarInputs">
+          <div class="col-md-8 mb-3 md-form">
+            <input
+              type="password"
+              class="form-control"
+              formControlName="password"
+              [ngClass]="{
+                'is-valid': ValidarTexto('password').error == false,
+                'is-invalid': ValidarTexto('password').error == true
+              }"
+              name="password"
+              placeholder="Escribe tu contraseña"
+            />
+            <label for="" class="obligatorios">*</label>
+          </div>
+        </div>
+        <div
+        *ngIf="ValidarTexto('password').error"
+        class="invalid-feedback d-block text-center"
+      >
+        {{ ValidarTexto("password").message }}
+      </div>
+        <div class="centrarInputs">
+          <div class="col-md-8 mb-3 md-form">
+            <input
+              type="password"
+              formControlName="password2"
+              [ngClass]="{
+                'is-valid': ValidarTexto('password2').error == false,
+                'is-invalid': ValidarTexto('password2').error == true
+              }"
+              class="form-control"
+              name="password2"
+              placeholder="Escribe tu contraseña otra vez"
+            />
+            <label for="" class="obligatorios">*</label>
+          </div>
+        </div>
+        <div
+        *ngIf="ValidarTexto('password2').error"
+        class="invalid-feedback d-block text-center"
+      >
+        {{ ValidarTexto("password2").message }}
+      </div>
+        <div class="container mt-5" style="border: 1px black solid;">
+          <h5 class="text-center mt-4" style="font-weight: bold;">
+            Datos personales
+          </h5>
+
+          <div class="centrarInputs">
+            <div class="col-md-8 mb-3 md-form">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="name_lastname"
+                [ngClass]="{
+                  'is-valid': ValidarTexto('name_lastname').error == false,
+                  'is-invalid': ValidarTexto('name_lastname').error == true
+                }"
+                name="name_lastname"
+                placeholder="Nombre y apellidos"
+              />
+              <label for="" class="obligatorios">*</label>
+            </div>
+          </div>
+          <div
+          *ngIf="ValidarTexto('name_lastname').error"
+          class="invalid-feedback d-block text-center"
+        >
+          {{ ValidarTexto("name_lastname").message }}
+        </div>
+          <div class="centrarInputs">
+            <div class="col-md-8 mb-3 md-form">
+              <input
+                type="text"
+                class="form-control"
+                name="RFC"
+                placeholder="RFC"
+              />
+            </div>
+          </div>
+
+          <div class="centrarInputs">
+            <div class="col-md-8 mb-3 md-form">
+              <input
+                type="text"
+                class="form-control"
+                name="tel"
+                formControlName="tel"
+                [ngClass]="{
+                  'is-valid': ValidarNumericos('tel').error == false,
+                  'is-invalid': ValidarNumericos('tel').error == true
+                }"
+                placeholder="Telefono de contacto"
+              />
+              <label for="" class="obligatorios">*</label>
+            </div>
+          </div>
+          <div
+          *ngIf="ValidarNumericos('tel').error"
+          class="invalid-feedback d-block text-center"
+        >
+          {{ ValidarNumericos("tel").message }}
+        </div>
+        </div>
+
+        <div class="container mt-5" style="border: 1px black solid;">
+          <h5 class="text-center mt-4" style="font-weight: bold;">
+            Datos Postales
+          </h5>
+
+          <div class="centrarInputs">
+            <div class="col-md-8 mb-3 md-form">
+              <input
+                type="text"
+                class="form-control"
+                name="direction"
+                placeholder="Direccion"
+                formControlName="direction"
+                [ngClass]="{
+                  'is-valid': ValidarTexto('direction').error == false,
+                  'is-invalid': ValidarTexto('direction').error == true
+                }"
+              />
+            </div>
+          </div>
+          <div
+          *ngIf="ValidarTexto('direction').error"
+          class="invalid-feedback d-block text-center"
+        >
+          {{ ValidarTexto("direction").message }}
+        </div>
+
+          <div class="centrarInputs">
+            <div class="row">
+              <div class="col-md-3 mb-3 md-form">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="N"
+                  placeholder="N°"
+                  formControlName="N"
+                  [ngClass]="{
+                    'is-valid': ValidarNumericos('N').error == false,
+                    'is-invalid': ValidarNumericos('N').error == true
+                  }"
+                />
+              </div>
+              <div
+              *ngIf="ValidarNumericos('N').error"
+              class="invalid-feedback d-block text-center"
+            >
+              {{ ValidarNumericos("N").message }}
+            </div>
+              <div class="col-md-3 mb-3 md-form">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="Esc"
+                  placeholder="Esc"
+                />
+              </div>
+
+              <div class="col-md-3 mb-3 md-form">
+                <input
+                  type="text"
+                  name="piso"
+                  placeholder="Piso"
+                  class="form-control"
+                />
+              </div>
+
+              <div class="col-md-3 mb-3 md-form">
+                <input
+                  type="text"
+                  name="letra"
+                  placeholder="Letra"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="centrarInputs">
+            <div class="col-md-3 mb-3 md-form">
+              <input
+                type="text"
+                name="cp"
+                placeholder="CP"
+                class="form-control"
+              />
+            </div>
+
+            <div class="col-md-6 mb-3 md-form">
+              <input
+                type="text"
+                name="localidad"
+                placeholder="Localidad"
+                class="form-control"
+              />
+            </div>
+          </div>
+
+          <div class="centrarInputs">
+            <div class="col-md-8 mb-3 md-form">
+              <input
+                type="text"
+                class="form-control"
+                name="estado"
+                placeholder="Estado"
+                formControlName="estado"
+                [ngClass]="{
+                  'is-valid': ValidarTexto('estado').error == false,
+                  'is-invalid': ValidarTexto('estado').error == true
+                }"
+              />
+            </div>
+          </div>
+          <div
+          *ngIf="ValidarTexto('estado').error"
+          class="invalid-feedback d-block text-center"
+        >
+          {{ ValidarTexto("estado").message }}
+        </div>
+        </div>
+      </ng-container>
+
+      <div class="col-12">
+        <button
+          type="button"
+          class="btn btn-outline-primary btn-block mt-5 mb-5"
+        >
+          Guardar formualario
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
